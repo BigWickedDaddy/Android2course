@@ -2,19 +2,41 @@ package com.itis.a1semitis
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import androidx.fragment.app.Fragment
+import com.itis.a1semitis.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(R.layout.activity_main) {
+
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater).also {
+            setContentView(it.root)
+        }
 
-        val student= ClassStudent("Oleg",20,101)
-        student.Study()
-        println("Kek ${student.kek}")
+        with(binding) {
+            btnLeft.setOnClickListener{
+                AnotherFragment(FirstF())
+            }
 
-        val teacher=ClassTeacher("Arslanov",1,102)
-        teacher.Chilling()
-        println("Lol ${teacher.lol}")
+            btnMiddle.setOnClickListener{
+                AnotherFragment(SecondF())
+            }
+
+            btnRight.setOnClickListener{
+                AnotherFragment(ThirdF())
+            }
+        }
+
     }
+
+    private fun AnotherFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+            .setCustomAnimations(R.anim.right, R.anim.right_back, R.anim.left, R.anim.left_back)
+            .replace(R.id.fragment_container_view_tag, fragment)
+            .addToBackStack(null)
+            .commit()
+    }
+
 }
