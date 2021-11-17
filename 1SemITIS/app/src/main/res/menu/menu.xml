@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/firstFragment"
+        android:icon="@drawable/ic_menu1_foreground"
+        android:title="Заглушка" />
+    <item
+        android:id="@+id/secondFragment"
+        android:icon="@drawable/ic_menu1_foreground"
+        android:title="Первый список" />
+    <item
+        android:id="@+id/thirdFragment"
+        android:icon="@drawable/ic_menu1_foreground"
+        android:title="Второй список" />
+
+</menu>
